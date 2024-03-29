@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Band Merch E-Shop</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <!-- Add other head elements here -->
+</head>
+<body>
+    <header>
+        <h1><a href="{% url 'home' %}">Rock Band Merch E-Shop</a></h1>
+        <nav>
+            <ul>
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="{% url 'category_list' %}">Categories</a></li>
+                <!-- Add more navigation links here -->
+                <li><a href="{% url 'search_results' %}">Search</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        {% block content %}
+        <!-- Page specific content will go here -->
+        {% endblock %}
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Rock Band Merch E-Shop. All rights reserved.</p>
+    </footer>
+
+    <!-- Add common scripts here -->
+    <script src="{% static 'js/script.js' %}"></script>
+</body>
+</html>

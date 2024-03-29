@@ -1,0 +1,36 @@
+{% extends 'catalog/base.html' %}
+
+{% block content %}
+  <div class="container">
+    <h1>Welcome to the Rock Band Merchandise E-Shop!</h1>
+
+    <!-- Featured Items Section -->
+    <section>
+      <h2>Featured Items</h2>
+      <div class="featured-items">
+        {% for item in featured_items %}
+          <div class="item">
+            <h3><a href="{% url 'item_detail' item.id %}">{{ item.name }}</a></h3>
+            {% if item.image %}
+              <img src="{{ item.image.url }}" alt="{{ item.name }}">
+            {% endif %}
+            <p>{{ item.description|truncatechars:100 }}</p>
+            <p>Price: ${{ item.price }}</p>
+          </div>
+        {% empty %}
+          <p>No featured items at the moment.</p>
+        {% endfor %}
+      </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section>
+      <h2>Shop by Category</h2>
+      <ul class="categories">
+        {% for category in categories %}
+          <li><a href="{% url 'item_list' category.id %}">{{ category.name }}</a></li>
+        {% endfor %}
+      </ul>
+    </section>
+  </div>
+{% endblock %}
