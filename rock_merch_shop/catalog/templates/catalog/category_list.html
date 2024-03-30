@@ -1,0 +1,14 @@
+{% extends 'catalog/base.html' %}
+
+{% block content %}
+<div class="container">
+    <h2>Categories</h2>
+    <ul class="category-list">
+        {% for category in categories %}
+        <li><a href="{% url 'item_list' category.id %}">{{ category.name }}</a></li>
+        {% empty %}
+        <p>No categories available.</p>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

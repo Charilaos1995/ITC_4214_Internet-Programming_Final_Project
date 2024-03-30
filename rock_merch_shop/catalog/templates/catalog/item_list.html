@@ -1,0 +1,21 @@
+{% extends 'catalog/base.html' %}
+
+{% block content %}
+<div class="container">
+    <h2>Items</h2>
+    <div class="item-list">
+        {% for item in items %}
+        <div class="item">
+            <h3><a href="{% url 'item_detail' item.id %}">{{ item.name }}</a></h3>
+            {% if item.image %}
+            <img src="{{ item.image.url }}" alt="{{ item.name }}" style="width:100px; height:auto;">
+            {% endif %}
+            <p>{{ item.description|truncatechars:100 }}</p>
+            <p>Price: ${{ item.price }}</p>
+        </div>
+        {% empty %}
+        <p>No items found in this category.</p>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

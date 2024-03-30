@@ -1,0 +1,15 @@
+{% extends 'catalog/base.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="item-detail">
+        <h2>{{ item.name }}</h2>
+        {% if item.image %}
+        <img src="{{ item.image.url }}" alt="{{ item.name }}" style="width:200px; height:auto;">
+        {% endif %}
+        <p>{{ item.description }}</p>
+        <p>Price: ${{ item.price }}</p>
+        <!-- Additional item details here -->
+    </div>
+</div>
+{% endblock %}
