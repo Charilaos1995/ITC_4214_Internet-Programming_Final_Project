@@ -8,7 +8,7 @@ from .models import Category, Item, Band
 
 # Home Page View
 def home(request):
-    featured_items = Item.objects.all()[:5]
+    featured_items = Item.objects.filter(is_featured=True)  # Gets only items marked as featured
     categories = Category.objects.all()
     context = {
         'featured_items': featured_items,

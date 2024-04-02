@@ -1,0 +1,89 @@
+body, h1, h2, h3, h4, h5, h6 {
+    font-family: 'RocknRoll One', sans-serif;
+}
+
+body {
+    background-color: #1c1c1c; /* Dark background */
+    color: #ffffff; /* Light text */
+}
+
+a, .btn-primary {
+    color: #ff0000; /* Bright accent color for links and buttons */
+}
+
+h1.display-3 {
+    font-family: 'RocknRoll One', sans-serif;
+    color: #fff;
+    text-shadow: 2px 2px 4px #000000;
+}
+
+.category-item {
+    background: #121212;
+    transition: transform .2s; /* Animation for hover */
+}
+
+.category-item:hover {
+    transform: scale(1.05); /* Slight increase in size on hover */
+}
+
+.card-title a {
+    transition: color .2s;
+}
+
+.card-title a:hover {
+    color: #ff0000; /* Red color on hover */
+}
+
+/* Custom Navbar Styles */
+.navbar {
+    background-color: #121212; /* Dark shade for navbar */
+    padding: 0.5rem 1rem; /* Adjust top and bottom padding */
+    border-bottom: 2px solid #333333; /* Adds a border for separation */
+}
+
+.navbar-brand {
+    display: flex;
+    align-items: center; /* Vertically centers logo and text */
+    gap: 0.5rem; /* Adds space between logo and site title */
+}
+
+.navbar-brand img {
+    height: 60px; /* Set height to align with your specified size */
+    width: auto; /* Ensures the logo maintains aspect ratio */
+    object-fit: contain;
+}
+
+.navbar .navbar-nav {
+    align-items: center; /* Aligns navbar items vertically */
+}
+
+/* Adjust the size, alignment, and hover color of nav links */
+.navbar .nav-link {
+    padding: 0.8rem 1rem; /* Vertical and horizontal padding */
+    font-size: 1.1rem; /* Adjust font size for better readability */
+    color: #ffffff; /* Set the default color to white */
+    transition: color 0.3s; /* Smooth transition for hover effect */
+}
+
+.navbar .nav-link:hover, .navbar .nav-link:focus {
+    color: #ff0000; /* Change color to red when hovered over */
+    text-decoration: none; /* Optional: Removes the underline on hover */
+}
+
+/* Similarly for the brand text if you want it to have the same hover effect */
+.navbar-brand:hover {
+    color: #ff0000; /* Change brand text to red on hover */
+}
+
+/* Footer Styles */
+footer {
+    background-color: #121212; /* Set to the same color as the navbar for consistency */
+}
+
+footer .nav-link, footer p {
+    color: #ffffff; /* Explicitly setting the footer text to white */
+}
+
+footer .nav-link:hover {
+    color: #ff0000; /* Accent color for links on hover */
+}

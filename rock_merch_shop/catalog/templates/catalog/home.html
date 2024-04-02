@@ -1,36 +1,52 @@
 {% extends 'catalog/base.html' %}
 
 {% block content %}
-  <div class="container">
-    <h1>Welcome to the Rock Band Merchandise E-Shop!</h1>
+  <div class="container mt-4">
+    <h1 class="text-center display-3 my-4">Welcome to the Rock Band Merchandise E-Shop!</h1>
 
     <!-- Featured Items Section -->
     <section>
-      <h2>Featured Items</h2>
-      <div class="featured-items">
+      <h2 class="text-center my-3">Featured Items</h2>
+      <div class="row">
         {% for item in featured_items %}
-          <div class="item">
-            <h3><a href="{% url 'item_detail' item.id %}">{{ item.name }}</a></h3>
-            {% if item.image %}
-              <img src="{{ item.image.url }}" alt="{{ item.name }}">
-            {% endif %}
-            <p>{{ item.description|truncatechars:100 }}</p>
-            <p>Price: ${{ item.price }}</p>
+          <div class="col-md-4 mb-3">
+            <div class="card h-100">
+              {% if item.image %}
+                <img src="{{ item.image.url }}" class="card-img-top" alt="{{ item.name }}">
+              {% endif %}
+              <div class="card-body">
+                <h5 class="card-title"><a href="{% url 'item_detail' item.id %}" class="text-dark">{{ item.name }}</a></h5>
+                <p class="card-text">{{ item.description|truncatechars:100 }}</p>
+              </div>
+              <div class="card-footer">
+                <p class="text-muted">Price: ${{ item.price }}</p>
+              </div>
+            </div>
           </div>
         {% empty %}
-          <p>No featured items at the moment.</p>
+          <div class="col-12">
+            <p class="text-center">No featured items at the moment.</p>
+          </div>
         {% endfor %}
       </div>
     </section>
 
     <!-- Categories Section -->
     <section>
-      <h2>Shop by Category</h2>
-      <ul class="categories">
+      <h2 class="text-center my-3">Shop by Category</h2>
+      <div class="row">
         {% for category in categories %}
-          <li><a href="{% url 'item_list' category.id %}">{{ category.name }}</a></li>
+          <div class="col-md-4 mb-3">
+            <div class="category-item card border-0">
+              <a href="{% url 'item_list' category.id %}" class="text-dark">
+                <div class="card-body text-center">
+                  <p class="display-6">{{ category.name }}</p>
+                </div>
+              </a>
+            </div>
+          </div>
         {% endfor %}
-      </ul>
+      </div>
     </section>
   </div>
 {% endblock %}
