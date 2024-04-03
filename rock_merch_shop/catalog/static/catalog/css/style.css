@@ -18,11 +18,13 @@ h1.display-3 {
 }
 
 .category-item {
-    background: #121212;
-    transition: transform .2s; /* Animation for hover */
+    background-color: #fafafa; /* Your chosen background color */
+    color: #101010; /* Ensures the text color is white for better contrast */
+    /* Add other styling as needed */
 }
 
 .category-item:hover {
+    background-color: #555;
     transform: scale(1.05); /* Slight increase in size on hover */
 }
 
