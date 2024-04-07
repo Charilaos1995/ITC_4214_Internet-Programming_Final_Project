@@ -25,6 +25,7 @@ urlpatterns = [
     path('register/', include('register.urls')),
     path('', include('catalog.urls')),
     path('login/', auth_views.LoginView.as_view(template_name='register/login.html'), name='login'),
+    path('logout/', auth_views.LogoutView.as_view(next_page='/'), name='logout'),
 ]
 
 if settings.DEBUG:

@@ -1,0 +1,36 @@
+{% extends 'register/layout.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <div class="card">
+                <h5 class="card-header">Profile</h5>
+                <div class="card-body">
+                    <p class="card-text"><strong>Username:</strong> {{ user.username }}</p>
+                    {% if messages %}
+                    <div class="alert alert-success" role="alert">
+                        {% for message in messages %}
+                        {{ message }}
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                    <!-- User Profile Form -->
+                    <form method="post" action="{% url 'profile' %}">
+                        {% csrf_token %}
+                        {{ user_form.as_p }}
+                        <button type="submit" name="update_profile" class="btn btn-primary">Update Profile</button>
+                    </form>
+
+                    <!-- Password Change Form -->
+                    <form method="post" action="{% url 'profile' %}">
+                        {% csrf_token %}
+                        {{ password_form.as_p }}
+                        <button type="submit" name="change_password" class="btn btn-primary">Change Password</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
