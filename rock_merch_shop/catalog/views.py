@@ -1,7 +1,9 @@
+from django.db.models import Q
 from django.shortcuts import render
 from django.shortcuts import get_object_or_404
 
 from .models import Category, Item, Band
+from .models import SearchHistory
 
 
 # Create your views here.
@@ -39,8 +41,40 @@ def item_detail(request, item_id):
 # Search Results View
 def search_results(request):
     query = request.GET.get('q', '')
-    items = Item.objects.filter(name__icontains=query) # Case-insensitive containment search
-    return render(request, 'catalog/search_results.html', {'items': items, 'query': query})
+
+    if query:
+        items = Item.objects.filter(
+            Q(name__icontains=query) |
+            Q(category__name__icontains=query) |
+            Q(band__name__icontains=query)
+        ).distinct()
+
+        # Log the search query for authenticated users
+        if request.user.is_authenticated:
+            log_search_history(request.user, query)
+    else:
+        items = Item.objects.none()
+
+    context = {'items' : items, 'query': query}
+    return render(request, 'catalog/search_results.html', context)
+
+def log_search_history(user, query):
+    try:
+        search_history = SearchHistory.objects.create(user=user, query=query)
+    except Exception as e:
+        pass
+
+def search_history(request):
+    if not request.user.is_authenticated:
+        pass
+
+    # Retrieve search history for the current user
+    user_search_history = SearchHistory.objects.filter(user=request.user).order_by('-timestamp')
+
+    context = {
+        'search_history': user_search_history
+    }
+    return render(request, 'catalog/search_history.html', context)
 
 # Band Detail View
 def band_detail(request, band_id):

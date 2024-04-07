@@ -1,5 +1,6 @@
-Username    Password
-User1       1234
-User2       5678
-User3       9101
-User4       1121
+Username            Password
+Mr.Mister(admin)    6191
+User1               1234
+User2               5678
+User3               9101
+User4               1121
