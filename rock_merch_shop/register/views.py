@@ -4,7 +4,7 @@ from django.contrib.auth.forms import UserCreationForm, PasswordChangeForm
 from django.urls import reverse
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from .forms import UserUpdateForm
+from .forms import UserUpdateForm, ContactForm
 
 
 def register(request):
@@ -49,3 +49,14 @@ def profile(request):
         'password_form': password_form,
     }
     return render(request, "register/profile.html", context)
+
+def contact(request):
+    if request.method == 'POST':
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            messages.success(request, 'Thank you for contacting us! We will get back to you soon.')
+            return redirect('home')  # Redirect the user to the home page after submitting the form
+    else:
+        form = ContactForm()
+
+    return render(request, 'register/contact.html', {'form': form})

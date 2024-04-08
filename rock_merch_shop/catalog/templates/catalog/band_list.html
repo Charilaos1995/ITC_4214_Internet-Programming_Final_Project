@@ -1,0 +1,16 @@
+{% extends 'catalog/base.html' %}
+
+{% block content %}
+<div class="container pt-5">
+    <h2>Bands</h2>
+    <ul class="list-unstyled">
+        {% for band in bands %}
+        <li>
+            <a href="{% url 'band_detail' band.id %}">{{ band.name }}</a> - {{ band.genre }}
+        </li>
+        {% empty %}
+        <p>No bands available.</p>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

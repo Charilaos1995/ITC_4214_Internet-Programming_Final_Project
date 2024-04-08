@@ -3,8 +3,29 @@ body, h1, h2, h3, h4, h5, h6 {
 }
 
 body {
+    padding-top: 70px; /* Adjusted to accommodate the fixed navbar */
     background-color: #1c1c1c; /* Dark background */
     color: #ffffff; /* Light text */
+}
+
+.main-content {
+    min-height: calc(100vh - 70px);
+    padding-bottom: 50px; /* Add some space at the bottom */
+}
+
+.item-image {
+    max-width: 100%; /* makes the image responsive */
+    height: auto; /* maintains the aspect ratio */
+    display: block; /* to avoid inline display */
+    margin: 0 auto; /* centers the image within its container */
+}
+
+.item-name {
+    margin-bottom: 50px;
+}
+
+.item-description {
+    margin-top: 50px;
 }
 
 a, .btn-primary {
@@ -24,8 +45,18 @@ h1.display-3 {
 }
 
 .category-item:hover {
-    background-color: #555;
+    background-color: #1832af;
     transform: scale(1.05); /* Slight increase in size on hover */
+}
+
+.band-item {
+    background-color: #fafafa;
+    color: #101010;
+}
+
+.band-item:hover {
+    background-color: #d30e0e;
+    transform: scale(1.05);
 }
 
 .card-title a {
@@ -72,22 +103,9 @@ h1.display-3 {
     text-decoration: none; /* Optional: Removes the underline on hover */
 }
 
-/* Similarly for the brand text if you want it to have the same hover effect */
-.navbar-brand:hover {
-    color: #ff0000; /* Change brand text to red on hover */
-}
-
 /* Footer Styles */
-footer {
-    background-color: #121212; /* Set to the same color as the navbar for consistency */
-}
-
-footer .nav-link, footer p {
-    color: #ffffff; /* Explicitly setting the footer text to white */
-}
-
-footer .nav-link:hover {
-    color: #ff0000; /* Accent color for links on hover */
+footer .nav-link.footer-link:hover {
+    color: #ff0000 !important; /* Text color on hover */
 }
 
 .rating-star {
@@ -97,3 +115,5 @@ footer .nav-link:hover {
 .rating-star.selected {
   color: gold;
 }
+
+

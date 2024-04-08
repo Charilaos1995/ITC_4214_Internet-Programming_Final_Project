@@ -17,9 +17,11 @@ from django.http import HttpResponseBadRequest
 def home(request):
     featured_items = Item.objects.filter(is_featured=True)  # Gets only items marked as featured
     categories = Category.objects.all()
+    bands = Band.objects.all()
     context = {
         'featured_items': featured_items,
-        'categories': categories
+        'categories': categories,
+        'bands': bands
     }
     return render(request, 'catalog/home.html', context)
 
@@ -98,6 +100,10 @@ def search_history(request):
     }
     return render(request, 'catalog/search_history.html', context)
 
+# Band List View
+def band_list(request):
+    bands = Band.objects.all()
+    return render(request, 'catalog/band_list.html', {'bands': bands})
 
 # Band Detail View
 def band_detail(request, band_id):

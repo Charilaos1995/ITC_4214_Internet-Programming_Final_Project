@@ -2,39 +2,59 @@
 
 {% block content %}
   <div class="container mt-4">
-    <h1 class="text-center display-3 my-4">Welcome to the Rock Band Merchandise E-Shop!</h1>
+    <h1 class="text-center display-3 pt-5">Welcome to the Rock Band Merchandise E-Shop!</h1>
 
     <!-- Featured Items Section -->
     <section>
-      <h2 class="text-center my-3">Featured Items</h2>
-      <div class="row">
-        {% for item in featured_items %}
-          <div class="col-md-4 mb-3">
-            <div class="card h-100">
-              {% if item.image %}
-                <img src="{{ item.image.url }}" class="card-img-top" alt="{{ item.name }}">
-              {% endif %}
-              <div class="card-body">
-                <h5 class="card-title"><a href="{% url 'item_detail' item.id %}" class="text-dark">{{ item.name }}</a></h5>
-                <p class="card-text">{{ item.description|truncatechars:100 }}</p>
-              </div>
-              <div class="card-footer">
-                <p class="text-muted">Price: ${{ item.price }}</p>
+      <h2 class="text-center pt-5">Featured Items</h2>
+      <div id="featuredItemsCarousel" class="carousel slide pt-5" data-bs-ride="carousel" data-bs-interval="1000">
+
+        <!-- Carousel indicators -->
+        <div class="carousel-indicators">
+          {% for item in featured_items %}
+            <button type="button" data-bs-target="#featuredItemsCarousel" data-bs-slide-to="{{ forloop.counter0 }}" {% if forloop.first %}class="active" aria-current="true"{% endif %} aria-label="Slide {{ forloop.counter }}"></button>
+          {% endfor %}
+        </div>
+
+        <!-- Carousel inner -->
+        <div class="carousel-inner">
+          {% for item in featured_items %}
+            <div class="carousel-item {% if forloop.first %}active{% endif %}" data-bs-interval="1000">
+              <!-- mx-auto for horizontal centering and d-block to make it block level -->
+              <div class="card h-100 mx-auto d-block" style="max-width: 350px;">
+                {% if item.image %}
+                  <img src="{{ item.image.url }}" class="d-block w-100 img-fluid" alt="{{ item.name }}">
+                {% endif %}
+                <div class="card-body">
+                  <h5 class="card-title"><a href="{% url 'item_detail' item.id %}" class="text-dark">{{ item.name }}</a></h5>
+                  <p class="card-text">{{ item.description|truncatechars:100 }}</p>
+                </div>
+                <div class="card-footer">
+                  <p class="text-muted">Price: ${{ item.price }}</p>
+                </div>
               </div>
             </div>
-          </div>
-        {% empty %}
-          <div class="col-12">
-            <p class="text-center">No featured items at the moment.</p>
-          </div>
-        {% endfor %}
+          {% endfor %}
+        </div>
+
+        <!-- Carousel controls -->
+        <button class="carousel-control-prev" type="button" data-bs-target="#featuredItemsCarousel" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#featuredItemsCarousel" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+
       </div>
     </section>
 
+
     <!-- Categories Section -->
     <section>
-      <h2 class="text-center my-3">Shop by Category</h2>
-      <div class="row">
+      <h2 class="text-center pt-5">Shop by Category</h2>
+      <div class="row pt-5">
         {% for category in categories %}
           <div class="col-md-4 mb-3">
             <div class="category-item card border-0">
@@ -48,5 +68,28 @@
         {% endfor %}
       </div>
     </section>
+
+    <!-- Shop by Band Section -->
+    <section>
+        <h2 class="text-center pt-5">Shop by Band</h2>
+        <div class="row pt-5">
+            {% for band in bands %}
+                <div class="col-md-4 mb-3">
+                    <div class="band-item card border-0">
+                        <a href="{% url 'band_detail' band.id %}" class="text-dark">
+                            <div class="card-body text-center">
+                                <p class="display-6">{{ band.name }}</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            {% empty %}
+                <div class="col-12">
+                    <p class="text-center">No bands available.</p>
+                </div>
+            {% endfor %}
+        </div>
+    </section>
+
   </div>
 {% endblock %}
