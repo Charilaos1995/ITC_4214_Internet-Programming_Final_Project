@@ -9,7 +9,18 @@
         {% endif %}
         <p>{{ item.description }}</p>
         <p>Price: ${{ item.price }}</p>
-        <!-- Additional item details here -->
+        <!-- Rating Stars Display -->
+        {% if user.is_authenticated %}
+            <!-- Rating Stars Display for logged-in users -->
+            <div>
+                {% for star in stars_range %}
+                    <span class="rating-star" data-value="{{ star }}" data-itemid="{{ item.id }}">&#9733;</span>
+                {% endfor %}
+            </div>
+        {% else %}
+            <!-- Prompt for non-logged-in users -->
+            <p>You must be logged in to rate items.</p>
+        {% endif %}
     </div>
 </div>
 {% endblock %}

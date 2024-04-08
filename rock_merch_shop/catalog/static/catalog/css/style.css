@@ -89,3 +89,11 @@ footer .nav-link, footer p {
 footer .nav-link:hover {
     color: #ff0000; /* Accent color for links on hover */
 }
+
+.rating-star {
+    cursor: pointer;
+}
+
+.rating-star.selected {
+  color: gold;
+}
