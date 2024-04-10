@@ -17,16 +17,27 @@
     {% block extra_js %}
     <script>
     // Bootstrap validation script
+    // The script is wrapped in an Immediately Invoked Function Expression (IIFE) to prevent polluting the global scope.
     (function() {
+       // 'use strict' is used to ensure that the code should be executed in "strict mode".
       'use strict';
+
+      // An event listener is added to the window's 'load' event. This ensures that the script runs after the entire page has loaded.
       window.addEventListener('load', function() {
+        // All forms with the class 'needs-validation' are selected.
         var forms = document.getElementsByClassName('needs-validation');
+
+        // The Array.prototype.filter method is used to iterate over the forms.
+        // For each form, an event listener is added to the 'submit' event
         var validation = Array.prototype.filter.call(forms, function(form) {
           form.addEventListener('submit', function(event) {
+            // The form's checkValidity method is called. If it returns false, the form is not valid.
+            // In this case, the form submission is prevented and the event propagation is stopped.
             if (!form.checkValidity()) {
               event.preventDefault();
               event.stopPropagation();
             }
+            // The 'was-validated' class is added to the form. This class is used by Bootstrap to style the form as validated.
             form.classList.add('was-validated');
           }, false);
         });

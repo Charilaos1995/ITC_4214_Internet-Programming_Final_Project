@@ -1,5 +1,7 @@
+/* Custom CSS for the Rock Merch Shop project */
+
 body, h1, h2, h3, h4, h5, h6 {
-    font-family: 'RocknRoll One', sans-serif;
+    font-family: 'RocknRoll One', sans-serif; /* Custom font for headings */
 }
 
 body {
@@ -9,7 +11,7 @@ body {
 }
 
 .main-content {
-    min-height: calc(100vh - 70px);
+    min-height: calc(100vh - 70px); /* Adjusted to accommodate the fixed navbar */
     padding-bottom: 50px; /* Add some space at the bottom */
 }
 
@@ -21,11 +23,11 @@ body {
 }
 
 .item-name {
-    margin-bottom: 50px;
+    margin-bottom: 50px; /* Adds space between the image and name */
 }
 
 .item-description {
-    margin-top: 50px;
+    margin-top: 50px; /* Adds space between the name and description */
 }
 
 a, .btn-primary {
@@ -39,28 +41,27 @@ h1.display-3 {
 }
 
 .category-item {
-    background-color: #fafafa; /* Your chosen background color */
+    background-color: #fafafa; /* Light gray background for category items */
     color: #101010; /* Ensures the text color is white for better contrast */
-    /* Add other styling as needed */
 }
 
 .category-item:hover {
-    background-color: #1832af;
+    background-color: #1832af; /* Dark blue background on hover */
     transform: scale(1.05); /* Slight increase in size on hover */
 }
 
 .band-item {
-    background-color: #fafafa;
-    color: #101010;
+    background-color: #fafafa; /* Light gray background for band items */
+    color: #101010; /* Ensures the text color is white for better contrast */
 }
 
 .band-item:hover {
-    background-color: #d30e0e;
-    transform: scale(1.05);
+    background-color: #d30e0e; /* Dark red background on hover */
+    transform: scale(1.05); /* Slight increase in size on hover */
 }
 
 .card-title a {
-    transition: color .2s;
+    transition: color .2s; /* Smooth transition for hover effect */
 }
 
 .card-title a:hover {
@@ -70,37 +71,37 @@ h1.display-3 {
 /* Custom Navbar Styles */
 .navbar {
     background-color: #121212; /* Dark shade for navbar */
-    padding: 0.5rem 1rem; /* Adjust top and bottom padding */
+    padding: 0.5rem 1rem; /* Padding for navbar content */
     border-bottom: 2px solid #333333; /* Adds a border for separation */
 }
 
 .navbar-brand {
-    display: flex;
+    display: flex; /* Allows for flexbox layout */
     align-items: center; /* Vertically centers logo and text */
     gap: 0.5rem; /* Adds space between logo and site title */
 }
 
 .navbar-brand img {
-    height: 60px; /* Set height to align with your specified size */
+    height: 60px; /* Adjusts the height of the logo */
     width: auto; /* Ensures the logo maintains aspect ratio */
-    object-fit: contain;
+    object-fit: contain; /* Prevents the logo from stretching */
 }
 
 .navbar .navbar-nav {
     align-items: center; /* Aligns navbar items vertically */
 }
 
-/* Adjust the size, alignment, and hover color of nav links */
+/* Navbar Link Styles */
 .navbar .nav-link {
     padding: 0.8rem 1rem; /* Vertical and horizontal padding */
-    font-size: 1.1rem; /* Adjust font size for better readability */
-    color: #ffffff; /* Set the default color to white */
+    font-size: 1.1rem; /* Font size for navbar links */
+    color: #ffffff; /* White text color */
     transition: color 0.3s; /* Smooth transition for hover effect */
 }
 
 .navbar .nav-link:hover, .navbar .nav-link:focus {
     color: #ff0000; /* Change color to red when hovered over */
-    text-decoration: none; /* Optional: Removes the underline on hover */
+    text-decoration: none; /* Removes the underline on hover */
 }
 
 /* Footer Styles */
@@ -108,12 +109,13 @@ footer .nav-link.footer-link:hover {
     color: #ff0000 !important; /* Text color on hover */
 }
 
+/* Custom Pagination Styles */
 .rating-star {
-    cursor: pointer;
+    cursor: pointer; /* Change cursor to pointer on hover */
 }
 
 .rating-star.selected {
-  color: gold;
+  color: gold; /* Change color to gold when selected */
 }
 
 
