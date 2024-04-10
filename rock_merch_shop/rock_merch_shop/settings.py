@@ -24,9 +24,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-jyfp*o8$5o!*gprdd*4034k()349oertc@iue0fdc!4)%n3@3%'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['DarthCharisma.pythonanywhere.com']
 
 
 # Application definition
@@ -79,8 +79,11 @@ WSGI_APPLICATION = 'rock_merch_shop.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'DarthCharisma$default',
+        'USER': 'DarthCharisma',
+        'PASSWORD': 'J2z9PvTh.$RBppd',
+        'HOST': 'DarthCharisma.mysql.pythonanywhere-services.com',
     }
 }
 
